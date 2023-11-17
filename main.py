@@ -404,8 +404,11 @@ while opcao.isdigit():
 		cpfInserir = input("CPF que deseja procurar: ")
 
 		if cpfInserir.isdigit():
-			print(f'\n{arvore_AVL_por_CPF.encontrar(cpfInserir, arvore_AVL_por_CPF.__getattribute__("raiz")).objeto}')
-
+			resultado = arvore_AVL_por_CPF.encontrar(cpfInserir, arvore_AVL_por_CPF.raiz)
+			if resultado is not None:
+				print(f'\n{resultado.objeto}')
+			else:
+				print("CPF não encontrado.")
 		else:
 			print("O CPF deve ser do tipo numérico!")
 
@@ -413,8 +416,13 @@ while opcao.isdigit():
 		iniciais = input("String inicial para nome: ")
 		
 		if not iniciais.isdigit():
-			arvore_AVL_por_nome.get_objeto_por_iniciais(iniciais, arvore_AVL_por_nome.__getattribute__("raiz"))
-
+			# Supondo que o método 'get_objeto_por_iniciais' retorna uma lista de objetos encontrados
+			resultado = arvore_AVL_por_nome.get_objeto_por_iniciais(iniciais, arvore_AVL_por_nome.raiz)
+			if resultado:
+				for obj in resultado:
+					print(obj)  # Ou alguma outra forma de formatar a saída
+			else:
+				print("Nenhum nome encontrado com essas iniciais.")
 		else:
 			print("Formato de string inválido!")
 
@@ -422,8 +430,13 @@ while opcao.isdigit():
 		dataNascimento = input("Data de nascimento menor ou igual a (DD/MM/AAAA): ")
 
 		if formato_data_correto(dataNascimento):
-			arvore_AVL_por_nascimento.get_objeto_por_data_menor_igual_a(dataNascimento, arvore_AVL_por_nascimento.__getattribute__("raiz"))
-
+			# Supondo que o método 'get_objeto_por_data_menor_igual_a' retorne uma lista de objetos encontrados
+			resultado = arvore_AVL_por_nascimento.get_objeto_por_data_menor_igual_a(dataNascimento, arvore_AVL_por_nascimento.raiz)
+			if resultado:
+				for obj in resultado:
+					print(obj)  # Ou alguma outra forma de formatar a saída
+			else:
+				print("Nenhuma pessoa encontrada com essa data de nascimento ou anterior.")
 		else:
 			print("Formato de data inválido!")
 
